@@ -14,9 +14,9 @@ namespace UnitTestKata
             var depo = new Account();
 
             depo._deposit = d;
-            balance = balance - depo.Deposit(depo._deposit);
+            balance = balance + depo.Deposit(depo._deposit);
 
-            Assert.AreEqual(10, balance);
+            Assert.AreEqual(30, balance);
         }
 
 
