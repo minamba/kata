@@ -32,6 +32,19 @@ namespace UnitTestKata
         }
 
         [TestMethod]
+        public void Shoud_add_amount_control()
+        {
+            int d = 10;
+            var account = new Account(d);
+            int r;
+
+            r = account.ControlAmount(d);
+
+            Assert.AreEqual(0, r);
+        }
+
+
+        [TestMethod]
         public void Shoud_add_amount_control_with_zero()
         {
             int d = 0;
