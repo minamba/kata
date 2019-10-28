@@ -27,7 +27,7 @@ namespace Kata
                 if (choice != "S")
                 {
                     Console.WriteLine("Veuillez saisir un montant :");
-                    amount = int.Parse(Console.ReadLine());
+                    int.TryParse(Console.ReadLine(), out amount);
                     account = new Account(amount);
                     control = account.ControlAmount(amount);
 

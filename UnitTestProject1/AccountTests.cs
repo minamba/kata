@@ -16,45 +16,8 @@ namespace UnitTestKata
 
             balance = account.Deposit();
 
-            Assert.AreEqual(510, balance);
+            Assert.AreEqual(10, balance);
         }
-
-        [TestMethod]
-        public void Shoud_add_amount_when_deposit_with_zero()
-        {
-            int d = 0;
-            var account = new Account(d);
-            int balance;
-
-            balance = account.Deposit();
-
-            Assert.AreEqual(0, balance);
-        }
-
-        [TestMethod]
-        public void Shoud_add_amount_when_deposit_with_minimum_limit()
-        {
-            int d = -100;
-            var account = new Account(d);
-            int balance;
-
-            balance = account.Deposit();
-
-            Assert.AreEqual(-1, balance);
-        }
-
-        [TestMethod]
-        public void Shoud_add_amount_when_deposit_with_maximum_limit()
-        {
-            int d = 1501;
-            var account = new Account(d);
-            int balance;
-
-            balance = account.Deposit();
-
-            Assert.AreEqual(-2, balance);
-        }
-
 
         [TestMethod]
         public void Shoud_add_amount_when_withdraw()
@@ -65,44 +28,43 @@ namespace UnitTestKata
 
             balance = account.WithDraw();
 
-            Assert.AreEqual(495, balance);
+            Assert.AreEqual(-5, balance);
         }
 
         [TestMethod]
-        public void Shoud_add_amount_when_withdraw_with_zero()
+        public void Shoud_add_amount_control_with_zero()
         {
-            int wd = 5;
-            var account = new Account(wd);
-            int balance;
+            int d = 0;
+            var account = new Account(d);
+            int r;
 
-            balance = account.WithDraw();
+            r = account.ControlAmount(d);
 
-            Assert.AreEqual(495, balance);
+            Assert.AreEqual(3, r);
         }
 
         [TestMethod]
-        public void Shoud_add_amount_when_withdraw_with_minimum_limit()
+        public void Shoud_add_amount_control_with_minimum_limit()
         {
-            int wd = -5;
-            var account = new Account(wd);
-            int balance;
+            int d = -100;
+            var account = new Account(d);
+            int r;
 
-            balance = account.WithDraw();
+            r = account.ControlAmount(d);
 
-            Assert.AreEqual(-1, balance);
+            Assert.AreEqual(1, r);
         }
 
-
         [TestMethod]
-        public void Shoud_add_amount_when_withdraw_with_maximum_limit()
+        public void Shoud_add_amount_control_with_maximum_limit()
         {
-            int wd = 1501;
-            var account = new Account(wd);
-            int balance;
+            int d = 1501;
+            var account = new Account(d);
+            int r;
 
-            balance = account.Deposit();
+            r= account.ControlAmount(d);
 
-            Assert.AreEqual(-2, balance);
+            Assert.AreEqual(2, r);
         }
 
 
